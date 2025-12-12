@@ -70,6 +70,14 @@ def download():
         if not url:
             flash("No URL provided!", "error")
             return redirect(url_for("index"))
+            
+        # Check for cookies.txt
+        cookie_file = os.path.join(app.root_path, 'cookies.txt')
+        ignore_cookies = not os.path.exists(cookie_file)
+        if not ignore_cookies:
+            app.logger.info("Found cookies.txt, using it for authentication.")
+        else:
+            app.logger.warning("cookies.txt not found. YouTube may block requests.")
 
         # AUDIO (MP3)
         if mode == "mp3" or mode == "mp3" or mode == "audio":
@@ -92,8 +100,12 @@ def download():
                 "http_chunk_size": 10485760,  # 10MB chunks
                 "retries": {"main": 10, "fragment": 10, "file_access": 10},
                 "fragment_retries": 10,
+                "fragment_retries": 10,
                 "skip_unavailable_fragments": True,
             }
+            
+            if not ignore_cookies:
+                ydl_opts['cookiefile'] = cookie_file
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
@@ -125,6 +137,9 @@ def download():
                 "skip_unavailable_fragments": True,
             }
 
+            if not ignore_cookies:
+                ydl_opts['cookiefile'] = cookie_file
+
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
 
@@ -155,6 +170,9 @@ def download():
                 "fragment_retries": 10,
                 "skip_unavailable_fragments": True,
             }
+            
+            if not ignore_cookies:
+                ydl_opts['cookiefile'] = cookie_file
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
