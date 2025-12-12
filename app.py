@@ -98,9 +98,9 @@ def download():
                 # Timeout settings for slow networks (Render, etc.)
                 "socket_timeout": 300,
                 "http_chunk_size": 10485760,  # 10MB chunks
-                "retries": {"main": 10, "fragment": 10, "file_access": 10},
+                "retries": 10,
                 "fragment_retries": 10,
-                "fragment_retries": 10,
+                "file_access_retries": 10,
                 "skip_unavailable_fragments": True,
             }
             
@@ -132,8 +132,9 @@ def download():
                 # Timeout settings for slow networks (Render, etc.)
                 "socket_timeout": 300,
                 "http_chunk_size": 10485760,  # 10MB chunks
-                "retries": {"main": 10, "fragment": 10, "file_access": 10},
+                "retries": 10,
                 "fragment_retries": 10,
+                "file_access_retries": 10,
                 "skip_unavailable_fragments": True,
             }
 
@@ -166,8 +167,9 @@ def download():
                 # Timeout settings for slow networks (Render, etc.)
                 "socket_timeout": 300,
                 "http_chunk_size": 10485760,  # 10MB chunks
-                "retries": {"main": 10, "fragment": 10, "file_access": 10},
+                "retries": 10,
                 "fragment_retries": 10,
+                "file_access_retries": 10,
                 "skip_unavailable_fragments": True,
             }
             
