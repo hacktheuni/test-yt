@@ -1,0 +1,679 @@
+/* ===================================
+   YouTube Downloader - Glass UI CSS
+   Fully Responsive Design
+   =================================== */
+
+/* CSS Variables */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --accent: rgba(126, 110, 255, 0.95);
+    --accent-2: rgba(0, 221, 255, 0.95);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+}
+
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, rgba(12, 10, 30, 1) 0%, rgba(24, 20, 40, 1) 100%);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Background Effects */
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12), transparent 50%), 
+        radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.08), transparent 50%);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 920px;
+    padding: 20px;
+}
+
+/* Card - Glassmorphism */
+.card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Header */
+.logo {
+    margin: 0 0 6px 0;
+    font-size: 32px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tag {
+    margin: 0 0 24px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Mode Buttons */
+.modes {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    flex: 1;
+    min-width: 100px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.mode-btn.active {
+    box-shadow: 
+        0 4px 16px rgba(126, 110, 255, 0.3),
+        0 0 0 1px rgba(126, 110, 255, 0.4);
+    border: 1px solid rgba(126, 110, 255, 0.5);
+    color: var(--text-primary);
+    background: rgba(126, 110, 255, 0.15);
+}
+
+/* Form Styles */
+form {
+    width: 100%;
+}
+
+.input-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    align-items: stretch;
+    margin-bottom: 16px;
+}
+
+/* URL Input */
+.input-row input[type="url"] {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    outline: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.input-row input[type="url"]:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.input-row input[type="url"]:focus {
+    border-color: rgba(126, 110, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(126, 110, 255, 0.1);
+}
+
+.input-row input[type="url"]::placeholder {
+    color: var(--text-muted);
+}
+
+/* Custom Dropdown */
+.dropdown {
+    position: relative;
+    width: 240px;
+    flex-shrink: 0;
+}
+
+.dropdown-selected {
+    padding: 14px 16px;
+    padding-right: 40px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    cursor: pointer;
+    user-select: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-selected:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-selected::after {
+    content: '▼';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-selected:hover::after {
+    color: var(--text-secondary);
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(15, 15, 25, 0.98);
+    border-radius: 12px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-list div {
+    padding: 14px 16px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-list div:last-child {
+    border-bottom: none;
+}
+
+.dropdown-list div:hover {
+    background: rgba(126, 110, 255, 0.15);
+    color: var(--text-primary);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.download-btn {
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 
+        0 8px 24px rgba(126, 110, 255, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 32px rgba(126, 110, 255, 0.4),
+        0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.download-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 6px 16px rgba(126, 110, 255, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Note */
+.note {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    line-height: 1.5;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border-left: 3px solid rgba(126, 110, 255, 0.3);
+}
+
+/* Messages */
+#messages {
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(126, 110, 255, 0.1);
+    border: 1px solid rgba(126, 110, 255, 0.3);
+    color: var(--text-primary);
+    font-size: 14px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#messages:not(:empty) {
+    display: block;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 28px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ===================================
+   RESPONSIVE BREAKPOINTS
+   =================================== */
+
+/* Tablet - 768px and below */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 24px 16px;
+    }
+    
+    .container {
+        padding: 12px;
+    }
+    
+    .card {
+        padding: 24px;
+        border-radius: 16px;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .tag {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    .modes {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .mode-btn {
+        font-size: 14px;
+        padding: 11px 14px;
+    }
+    
+    .input-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .input-row input[type="url"] {
+        width: 100%;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .dropdown {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .dropdown-selected {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .dropdown-list div {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 13px 16px;
+    }
+    
+    .actions {
+        justify-content: stretch;
+    }
+    
+    .download-btn {
+        width: 100%;
+        padding: 15px 24px;
+        font-size: 16px;
+    }
+    
+    .note {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    .footer {
+        margin-top: 24px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile - 480px and below */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 16px 12px;
+    }
+    
+    .container {
+        padding: 8px;
+    }
+    
+    .card {
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+    
+    .logo {
+        font-size: 24px;
+        letter-spacing: 0.3px;
+    }
+    
+    .tag {
+        font-size: 12px;
+        margin-bottom: 18px;
+    }
+    
+    .modes {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+    
+    .mode-btn {
+        width: 100%;
+        min-width: 100%;
+        padding: 13px 16px;
+        font-size: 15px;
+    }
+    
+    .input-row {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+    
+    .input-row input[type="url"] {
+        padding: 13px 14px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown-selected {
+        padding: 13px 14px;
+        padding-right: 36px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    
+    .dropdown-list {
+        border-radius: 10px;
+    }
+    
+    .dropdown-list div {
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+    
+    .actions {
+        margin-top: 16px;
+    }
+    
+    .download-btn {
+        padding: 14px 20px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+    
+    .note {
+        font-size: 11px;
+        padding: 10px;
+        margin-top: 14px;
+    }
+    
+    #messages {
+        padding: 12px 14px;
+        font-size: 13px;
+        margin-top: 16px;
+    }
+    
+    .footer {
+        margin-top: 20px;
+        padding-top: 16px;
+        font-size: 11px;
+    }
+}
+
+/* Extra Small Mobile - 360px and below */
+@media screen and (max-width: 360px) {
+    body {
+        padding: 12px 8px;
+    }
+    
+    .card {
+        padding: 16px 12px;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .tag {
+        font-size: 11px;
+    }
+    
+    .mode-btn {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+    
+    .input-row input[type="url"],
+    .dropdown-selected {
+        padding: 12px;
+    }
+    
+    .download-btn {
+        padding: 13px 18px;
+        font-size: 14px;
+    }
+}
+
+/* Landscape Mode for Mobile */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 16px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .logo {
+        font-size: 22px;
+        margin-bottom: 4px;
+    }
+    
+    .tag {
+        margin-bottom: 12px;
+    }
+    
+    .modes {
+        margin-bottom: 12px;
+    }
+    
+    .input-row {
+        margin-bottom: 12px;
+    }
+    
+    .actions {
+        margin-top: 12px;
+    }
+    
+    .note {
+        margin-top: 10px;
+    }
+    
+    .footer {
+        margin-top: 16px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        border-width: 0.5px;
+    }
+    
+    .mode-btn {
+        border-width: 0.5px;
+    }
+    
+    .dropdown-selected,
+    .dropdown-list {
+        border-width: 0.5px;
+    }
+}
+
+/* Dark Mode Support (if system prefers dark) */
+@media (prefers-color-scheme: dark) {
+    /* Already optimized for dark mode */
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .bg {
+        display: none;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .download-btn {
+        display: none;
+    }
+}

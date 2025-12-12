@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube Downloader — Glass UI</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="container">
+      <div class="card">
+        <h1 class="logo">YT Downloader</h1>
+        <p class="tag">Fast • Secure • Free</p>
+
+        <div class="modes">
+          <button type="button" class="mode-btn active" data-mode="video">Video</button>
+          <button type="button" class="mode-btn" data-mode="playlist">Playlist</button>
+          <button type="button" class="mode-btn" data-mode="mp3">MP3</button>
+        </div>
+
+        <form id="downloadForm" method="post" action="/download">
+          <input type="hidden" name="mode" id="modeInput" value="video" />
+
+          <div class="input-row">
+            <input name="url" id="url" type="url" placeholder="Paste YouTube video or playlist link" required />
+
+            <div class="dropdown">
+              <div class="dropdown-selected" id="dropdownSelected">C — 1080p</div>
+              <div class="dropdown-list" id="dropdownList">
+                <div data-value="a">A — 4K (2160p)</div>
+                <div data-value="b">B — 2K (1440p)</div>
+                <div data-value="c">C — 1080p</div>
+                <div data-value="d">D — 720p</div>
+                <div data-value="e">E — 480p</div>
+                <div data-value="audio">Audio only (best)</div>
+              </div>
+              <input type="hidden" name="quality" id="quality" value="c" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="download-btn">Download</button>
+          </div>
+
+          <p class="note">Tip: For MP3 choose MP3 mode. Playlist will be returned as a ZIP.</p>
+        </form>
+
+        <div id="messages">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="message {{ category }}">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+
+      <footer class="footer">Made with ❤️ — Jd's & HTU</footer>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
